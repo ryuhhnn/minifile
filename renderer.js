@@ -77,7 +77,7 @@ document.addEventListener('drop', function (e) {
 
     // Minify all CSS files
     if (css_files.length) {
-        new CleanCSS().minify(css_files, function (error, output) {
+        new CleanCSS({rebase:false}).minify(css_files, function (error, output) {
             fs.writeFile(output_path + '\\minified-css.min.css', output.styles, function (err) {
                 if (err) {
                     window.alert('There was an issue exporting your CSS files')
