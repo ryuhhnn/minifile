@@ -1,6 +1,6 @@
-let CleanCSS = require('clean-css')
-let UglifyJS = require("uglify-js")
-let fs = require('fs')
+const CleanCSS = require('clean-css')
+const UglifyJS = require("uglify-js")
+const fs = require('fs')
 
 let css_files = []
 let js_files = []
@@ -15,7 +15,7 @@ $('#output-directory').change(function() {
 
 // Minify all JS files
 function minify_js_files() {
-    fs.writeFile(output_path + '\\output-js.min.js', output_js, function (err) {
+    fs.writeFile(`${output_path}/output-js.min.js`, output_js, function (err) {
         if (err) {
             window.alert('There was an issue exporting your JS files')
             return console.error(err)
@@ -78,7 +78,7 @@ document.addEventListener('drop', function (e) {
     // Minify all CSS files
     if (css_files.length) {
         new CleanCSS({rebase:false}).minify(css_files, function (error, output) {
-            fs.writeFile(output_path + '\\minified-css.min.css', output.styles, function (err) {
+            fs.writeFile(`${output_path}/minified-css.min.css`, output.styles, function (err) {
                 if (err) {
                     window.alert('There was an issue exporting your CSS files')
                     return console.error(err)
